@@ -1,31 +1,62 @@
 <!-- the script is where the js code goes -->
 <script setup>
-import { ref } from "vue" // you need this to use ref()
+import { ref } from "vue" 
 
-//Ner reference variable
+//Reference variable
 let user = ref("- Naree")
+let text = ref("")
+let newtext = ref("")
+let newtextvar = ref("")
+let newtextcolour = ref("")
 
+//function increment () {
+    //count.value++;
+    //console.log(count);
+
+//}
+
+function updateMainText() {
+text.value = newtext.value;
+}
+
+//Change Main Box Colour 
+let Colour = ref('White'); // Initial color for the main content
+let newColour = ref(''); // Variable to store the color from the text box
+
+// Update the mainColor with the value from the text box
+function changeColour (){
+    Colour.value = newColour.value;
+};
+
+function reset () {
+    reset.addEventListener("click",reset)
+}
 </script>
-
-
-
 
 <!-- the template is where the html code goes -->
 <template>
  <div id="navbar" class="container">  
-        <div id="title">Data Management Assignment 02 {{ user }}</div>
+        <div id="title">Data Management Assignment 02 {{ user }} </div>
        
+</div>
+
+<div id="flex">
+            <div id="flexside">
+                <div id="sidebar1" class="container"> 
+                    Input your text here:
+                    <input type="text" v-model="newtext" placeholder="Add text">
+                    <button @click="updateMainText">Update Text</button>
+                </div>
+
+                <div id="sidebar2" class="container"> Input colour
+                    <input type="text" v-model="newColour" placeholder="Colour">
+                    <button @click="changeColour">Change Color</button>
+                </div>
+            </div>
+            <div id="main" :style="{ backgroundColor:Colour }" class="container"> 
+                {{ text }} 
+            </div>
     </div>
-
-    <div id="flex">
-
-        <div id="sidebar" class="container"> Input</div>
-
-        <div id="main" class="container"> Output </div>
-    </div>
-
-
-
 </template>
 
 
@@ -54,7 +85,7 @@ div{
 
     height: 50px;
     border-color: grey;
-background-color: pink;
+    background-color: pink;
 
 }
 
@@ -67,16 +98,23 @@ background-color: pink;
 #sidebar{
     
     width:20%;
+    height:100%;
     border-color: grey;
-background-color: white;
+    background-color: white;
+    color: black;
+}
+
+#sidebar2{
+    
+    height:100%;
+    background-color: lightblue;
 color: black;
 }
 
 #main{
     width:80%;
     border-color: grey;
-background-color: lemonchiffon;
-
+background-color: white;
 
 }
 
