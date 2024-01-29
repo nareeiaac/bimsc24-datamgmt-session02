@@ -6,8 +6,6 @@ import { ref } from "vue"
 let user = ref("- Naree")
 let text = ref("")
 let newtext = ref("")
-let newtextvar = ref("")
-let newtextcolour = ref("")
 
 //function increment () {
     //count.value++;
@@ -16,17 +14,17 @@ let newtextcolour = ref("")
 //}
 
 function updateMainText() {
-text.value = newtext.value;
+text.value += newtext.value;
 }
 
 //Change Main Box Colour 
-let Colour = ref('White'); // Initial color for the main content
-let newColour = ref(''); // Variable to store the color from the text box
+let Colour = ref('White'); 
+let newColour = ref(''); 
 
 // Update the mainColor with the value from the text box
 function changeColour (){
     Colour.value = newColour.value;
-};
+}
 
 function reset () {
     reset.addEventListener("click",reset)
@@ -48,9 +46,9 @@ function reset () {
                     <button @click="updateMainText">Update Text</button>
                 </div>
 
-                <div id="sidebar2" class="container"> Input colour
+                <div id="sidebar2" class="container"> Input colour:
                     <input type="text" v-model="newColour" placeholder="Colour">
-                    <button @click="changeColour">Change Color</button>
+                    <button @click="changeColour">Change Colour</button>
                 </div>
             </div>
             <div id="main" :style="{ backgroundColor:Colour }" class="container"> 
@@ -114,7 +112,7 @@ color: black;
 #main{
     width:80%;
     border-color: grey;
-background-color: white;
+    background-color: white;
 
 }
 
